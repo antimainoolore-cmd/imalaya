@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, CheckCircle2, Radio, Plus, BarChart3, ChevronDown, ChevronUp, History, Loader2 } from 'lucide-react';
 import type { Match, Prediction, MatchStatistic, H2HData } from '@/lib/supabase';
 import { supabase } from '@/lib/supabase';
@@ -194,8 +195,9 @@ export function MatchCard({ match, predictions, onPredictionAdded, index }: Matc
   };
 
   return (
-    <div
-      className={`glass-card rounded-2xl overflow-hidden animate-slide-up transition-all duration-300 ${
+    <Link
+      to={`/match/${match.id}`}
+      className={`glass-card rounded-2xl overflow-hidden animate-slide-up transition-all duration-300 cursor-pointer hover:scale-[1.02] ${
         isLive ? 'animate-pulse-live' : ''
       }`}
       style={{ animationDelay: `${index * 60}ms` }}
@@ -477,7 +479,7 @@ export function MatchCard({ match, predictions, onPredictionAdded, index }: Matc
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 }
 

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, MapPin } from 'lucide-react';
 import { PitchLineup } from '@/components/PitchLineup';
@@ -43,6 +44,10 @@ const mockH2H = [
 
 export default function MatchDetail() {
   const { id } = useParams<{ id: string }>();
+
+  useEffect(() => {
+    console.log("Match ID recibido:", id);
+  }, [id]);
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-8">
